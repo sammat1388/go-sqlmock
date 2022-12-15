@@ -84,6 +84,8 @@ type SqlmockCommon interface {
 	// sql driver.Value slice or from the CSV string and
 	// to be used as sql driver.Rows.
 	NewRows(columns []string) *Rows
+	
+	ResetExpectations()
 }
 
 type sqlmock struct {
@@ -137,7 +139,7 @@ func (c *sqlmock) MatchExpectationsInOrder(b bool) {
 	c.ordered = b
 }
 
-func (c *sqlmock) ResetExpectations(b bool) {
+func (c *sqlmock) ResetExpectations() {
 	c.expected = nil
 }
 
