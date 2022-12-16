@@ -8,7 +8,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/sammat1388/go-sqlmock"
 )
 
 func (a *api) assertJSON(actual []byte, data interface{}, t *testing.T) {

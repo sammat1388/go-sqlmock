@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/DATA-DOG/go-sqlmock.svg)](https://travis-ci.org/DATA-DOG/go-sqlmock)
-[![GoDoc](https://godoc.org/github.com/DATA-DOG/go-sqlmock?status.svg)](https://godoc.org/github.com/DATA-DOG/go-sqlmock)
-[![Go Report Card](https://goreportcard.com/badge/github.com/DATA-DOG/go-sqlmock)](https://goreportcard.com/report/github.com/DATA-DOG/go-sqlmock)
+[![GoDoc](https://godoc.org/github.com/sammat1388/go-sqlmock?status.svg)](https://godoc.org/github.com/sammat1388/go-sqlmock)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sammat1388/go-sqlmock)](https://goreportcard.com/report/github.com/sammat1388/go-sqlmock)
 [![codecov.io](https://codecov.io/github/DATA-DOG/go-sqlmock/branch/master/graph/badge.svg)](https://codecov.io/github/DATA-DOG/go-sqlmock)
 
 # Sql driver mock for Golang
@@ -28,19 +28,19 @@ to person or an organization motivated to maintain it. Open up a conversation if
 
 ## Install
 
-    go get github.com/DATA-DOG/go-sqlmock
+    go get github.com/sammat1388/go-sqlmock
 
 ## Documentation and Examples
 
-Visit [godoc](http://godoc.org/github.com/DATA-DOG/go-sqlmock) for general examples and public api reference.
+Visit [godoc](http://godoc.org/github.com/sammat1388/go-sqlmock) for general examples and public api reference.
 See **.travis.yml** for supported **go** versions.
 Different use case, is to functionally test with a real database - [go-txdb](https://github.com/DATA-DOG/go-txdb)
 all database related actions are isolated within a single transaction so the database can remain in the same state.
 
 See implementation examples:
 
-- [blog API server](https://github.com/DATA-DOG/go-sqlmock/tree/master/examples/blog)
-- [the same orders example](https://github.com/DATA-DOG/go-sqlmock/tree/master/examples/orders)
+- [blog API server](https://github.com/sammat1388/go-sqlmock/tree/master/examples/blog)
+- [the same orders example](https://github.com/sammat1388/go-sqlmock/tree/master/examples/orders)
 
 ### Something you may want to test, assuming you use the [go-mysql-driver](https://github.com/go-sql-driver/mysql)
 
@@ -100,7 +100,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/sammat1388/go-sqlmock"
 )
 
 // a successful case
@@ -179,7 +179,7 @@ provide a standard sql parsing matchers, since various drivers may not follow th
 ## Matching arguments like time.Time
 
 There may be arguments which are of `struct` type and cannot be compared easily by value like `time.Time`. In this case
-**sqlmock** provides an [Argument](https://godoc.org/github.com/DATA-DOG/go-sqlmock#Argument) interface which
+**sqlmock** provides an [Argument](https://godoc.org/github.com/sammat1388/go-sqlmock#Argument) interface which
 can be used in more sophisticated matching. Here is a simple example of time argument matching:
 
 ``` go
@@ -238,19 +238,19 @@ It only asserts that argument is of `time.Time` type.
   of argument matcher.
 - **2016-02-23** - convert expected arguments to driver.Value as natural
   driver does, the change may affect time.Time comparison and will be
-  stricter. See [issue](https://github.com/DATA-DOG/go-sqlmock/issues/31).
+  stricter. See [issue](https://github.com/sammat1388/go-sqlmock/issues/31).
 - **2015-08-27** - **v1** api change, concurrency support, all known issues fixed.
 - **2014-08-16** instead of **panic** during reflect type mismatch when comparing query arguments - now return error
 - **2014-08-14** added **sqlmock.NewErrorResult** which gives an option to return driver.Result with errors for
-interface methods, see [issue](https://github.com/DATA-DOG/go-sqlmock/issues/5)
+interface methods, see [issue](https://github.com/sammat1388/go-sqlmock/issues/5)
 - **2014-05-29** allow to match arguments in more sophisticated ways, by providing an **sqlmock.Argument** interface
 - **2014-04-21** introduce **sqlmock.New()** to open a mock database connection for tests. This method
-calls sql.DB.Ping to ensure that connection is open, see [issue](https://github.com/DATA-DOG/go-sqlmock/issues/4).
+calls sql.DB.Ping to ensure that connection is open, see [issue](https://github.com/sammat1388/go-sqlmock/issues/4).
 This way on Close it will surely assert if all expectations are met, even if database was not triggered at all.
 The old way is still available, but it is advisable to call db.Ping manually before asserting with db.Close.
 - **2014-02-14** RowsFromCSVString is now a part of Rows interface named as FromCSVString.
 It has changed to allow more ways to construct rows and to easily extend this API in future.
-See [issue 1](https://github.com/DATA-DOG/go-sqlmock/issues/1)
+See [issue 1](https://github.com/sammat1388/go-sqlmock/issues/1)
 **RowsFromCSVString** is deprecated and will be removed in future
 
 ## Contributions
